@@ -1,0 +1,28 @@
+@mixin cover-background 
+{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+}
+
+@mixin create-mq($breakpoint) {
+    @if($breakpoint == 0) {
+    @content;
+    } @else {
+    @media screen and (min-width: $breakpoint *1px) {
+        @content;
+    }
+    }
+}
+
+@mixin create-col-classes($modifier, $grid__cols, $breakpoint) {
+    @include create-mq($breakpoint) {
+    @for $i from 1 through $grid__cols {
+        .container {
+        &__col#{$modifier}-#{$i} {
+        width: (100 / ($grid__cols / $i) ) * 1%;
+        }}
+    }
+    }
+}

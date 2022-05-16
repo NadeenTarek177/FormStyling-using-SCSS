@@ -1,0 +1,71 @@
+@import './_abstracts/mixins' ;
+@import './_abstracts/variables' ;
+@import './_abstracts/colors' ; 
+@import './_components/elements' ;
+
+.bg
+{
+    background-image: url("../images/3.jpg");
+    @include cover-background;
+}
+
+.container 
+{
+    &__row 
+    {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+.large-title
+{
+    text-align: center;
+    font-size: 200px;
+    font-family:'Times New Roman', Times, serif ;
+    font-style: italic;
+    margin:20% auto;
+    color: rgb(89, 141, 155); 
+    
+}
+$map-grid-props: ('--sm': 0, '--md': $grid__bp-md, '--lg': $grid__bp-lg);
+@each $modifier , $breakpoint in $map-grid-props
+{
+    @include create-col-classes($modifier, $grid__cols, $breakpoint);
+}
+
+.input-ordinary,.input-textarea
+{
+    width: 50%;
+    padding: 12px;
+    margin-top:10px ;
+    border-radius: 4px;
+}
+.button-primary 
+{
+    background-color:$primarycolor;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    width: 150px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 70px;
+    box-shadow: $primarycolor;
+    &:hover 
+    {
+        background-color: $secondarycolor;
+    }
+}
+.form
+{
+    margin:auto;
+    margin-top: 15%;
+    border-radius: 10px;
+    border: 2px;
+    background-color: rgba(247, 231, 242, 0.4);
+    text-align: center;
+    box-shadow:3px 4px 4px 4px rgb(89, 141, 155,0.3);
+    padding: 35px 35px 35px 35px;
+    
+}
